@@ -9,22 +9,23 @@ class NoticeBase(BaseModel):
     start_date: Optional[datetime] = Field(None, example="2024-01-01T00:00:00")
     end_date: Optional[datetime] = Field(None, example="2024-01-31T23:59:59")
     audience: Optional[str] = Field(None, example="all")  # e.g., all, students, faculty
+    tags: Optional[List[str]] = None
     priority: Optional[int] = Field(1, example=1)  # e.g., 1 (high), 2 (medium), 3 (low)
+    created_by: Optional[int] = Field(None, description="ID of the user who created the notice")
 
+
+class NoticeCreate(NoticeBase):
+    pass
 
 
 
 class NoticeUpdate(BaseModel):
     title: Optional[str] = None
-    summary: Optional[str] = None
     content: Optional[str] = None
-    start_date: Optional[date] = None
-    end_date: Optional[date] = None
+    start_date: Optional[datetime] = None
+    end_date: Optional[datetime] = None
     audience: Optional[List[str]] = None
     tags: Optional[List[str]] = None
-    attachments: Optional[List[HttpUrl]] = None
-    is_published: Optional[bool] = None
-    is_important: Optional[bool] = None
     priority: Optional[int] = None
     
     
