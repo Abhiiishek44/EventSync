@@ -1,7 +1,7 @@
-from pydentic import BaseModel, EmailStr, Field
 from typing import Optional
 from datetime import datetime
-
+import bcrypt
+from pydantic import BaseModel, Field, EmailStr
 
 class userBase(BaseModel):
     name: Optional[str] = None
@@ -15,7 +15,7 @@ class userRegister(userBase):
 
 
 
-class UserLogin(BaseModel):
+class userLogin(BaseModel):
     email: EmailStr = Field(...,example="user@example.com")
     password: str = Field(...,min_length=6,example="strongpassword123")
     
@@ -50,3 +50,10 @@ class TokenData(BaseModel):
     role: Optional[str] = None
     
     
+def hash_password(password: str) -> str:
+    salt = bcrypt.gensalt()
+    hashed = bcrypt.hashpw(password.encode('utf-8'), salt)
+    return hashed.decode('utf-8')
+    
+def verify_password(plain_password: str, hashed_password: str) -> bool:
+    return bcrypt.checkpw(plain_password.encode('utf-8'), hashed_password.encode('utf-8'))

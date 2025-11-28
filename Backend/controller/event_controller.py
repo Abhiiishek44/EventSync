@@ -28,7 +28,7 @@ async def create_event(request: EventCreate, user_id: str):
           new_event = request.dict() 
           new_event['organizer'] = user_id
           new_event['created_at'] = datetime.utcnow()
-        
+          
           result = await events_collection.insert_one(new_event)
           created_event = await events_collection.find_one({"_id": result.inserted_id})
           created_event = event_serializer(created_event)
