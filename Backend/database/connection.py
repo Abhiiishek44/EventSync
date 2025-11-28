@@ -5,5 +5,8 @@ mongo_url = "mongodb://localhost:27017"
 mongo_client = AsyncIOMotorClient(mongo_url)
 DB = mongo_client['eventsync_db']
 events_collection = DB["events"]
+users_collection = DB["users"]
+blacklisted_tokens = DB["blacklisted_tokens"]
+
 
 
