@@ -7,6 +7,7 @@ DB = mongo_client['eventsync_db']
 events_collection = DB["events"]
 users_collection = DB["users"]
 blacklisted_tokens = DB["blacklisted_tokens"]
+notices_collection = DB["notices"]
 
 
 
