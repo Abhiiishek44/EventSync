@@ -1,6 +1,8 @@
 from fastapi import FastAPI
 from router import event_router
 from router import auth_router
+from router import teacher_router
+
 app = FastAPI()
 
 
@@ -10,4 +12,5 @@ def home():
 
 app.include_router(event_router.router)
 app.include_router(auth_router.router)
+app.include_router(teacher_router.router)
 
