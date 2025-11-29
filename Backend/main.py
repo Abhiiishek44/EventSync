@@ -10,3 +10,4 @@ def home():
 
 app.include_router(event_router.router)
 app.include_router(auth_router.router)
+
