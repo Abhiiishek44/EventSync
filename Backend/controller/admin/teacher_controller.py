@@ -42,10 +42,8 @@ def generate_random_password(length: int = 12) -> str:
     Returns:
         str: Randomly generated password
     """
-    # Include uppercase, lowercase, digits, and special characters
     characters = string.ascii_letters + string.digits + "!@#$%^&*"
-    
-    # Ensure password has at least one of each type
+
     password = [
         secrets.choice(string.ascii_uppercase),
         secrets.choice(string.ascii_lowercase),
@@ -53,10 +51,8 @@ def generate_random_password(length: int = 12) -> str:
         secrets.choice("!@#$%^&*")
     ]
     
-    # Fill the rest randomly
     password += [secrets.choice(characters) for _ in range(length - 4)]
-    
-    # Shuffle to avoid predictable patterns
+   
     secrets.SystemRandom().shuffle(password)
     
     return ''.join(password)
