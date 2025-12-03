@@ -146,7 +146,7 @@ async def get_all_teachers():
     async for teacher in cursor:
         teacher["id"] = str(teacher["_id"])
         teacher.pop("_id", None)
-        teacher.pop("password", None)  # Don't expose passwords
+        teacher.pop("password", None) 
         teachers.append(teacher)
     
     return teachers
