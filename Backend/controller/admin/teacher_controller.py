@@ -84,11 +84,9 @@ async def create_teacher(teacher_data: TeacherCreate, admin_id: str) -> TeacherR
     if existing_user:
         raise HTTPException(status_code=400, detail="This email is already registered as a user")
     
-    # Generate teacher ID and password
     teacher_id = generate_teacher_id()
     password = generate_random_password()
     
-    # Hash the password
     hashed_password = hash_password(password)
     
     # Prepare teacher document
