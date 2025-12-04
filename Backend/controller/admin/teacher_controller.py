@@ -89,7 +89,6 @@ async def create_teacher(teacher_data: TeacherCreate, admin_id: str) -> TeacherR
     
     hashed_password = hash_password(password)
     
-    # Prepare teacher document
     new_teacher = {
         "name": teacher_data.name,
         "email": teacher_data.email,
