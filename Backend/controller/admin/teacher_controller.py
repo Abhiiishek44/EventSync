@@ -184,8 +184,6 @@ async def delete_teacher(teacher_id: str, admin_id: str):
     Returns:
         dict: Success message
         
-    Raises:
-        HTTPException: If teacher not found
     """
     result = await teachers_collection.delete_one({"_id": ObjectId(teacher_id)})
     if result.deleted_count == 0:
